@@ -1,0 +1,1 @@
+slaveContext_cpp_dependencies =  ../src/core/slaveContext.cpp  $(bin)MFSSvc_deps/slaveContext_cpp.stamp

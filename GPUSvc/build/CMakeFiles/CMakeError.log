@@ -1,0 +1,59 @@
+Performing C++ SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /hpcfs/juno/junogpu/yiph/Muon/software/sl7/J19v1r1-branch/offline/CommonSvc/GPUSvc/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_7b7f6/fast && /usr/bin/gmake -f CMakeFiles/cmTC_7b7f6.dir/build.make CMakeFiles/cmTC_7b7f6.dir/build
+gmake[1]: 进入目录“/hpcfs/juno/junogpu/yiph/Muon/software/sl7/J19v1r1-branch/offline/CommonSvc/GPUSvc/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_7b7f6.dir/src.cxx.o
+/hpcfs/juno/junogpu/yiph/Muon/software/sl7/gcc/8.3.0/bin/g++    -std=c++11 -rdynamic -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_7b7f6.dir/src.cxx.o -c /hpcfs/juno/junogpu/yiph/Muon/software/sl7/J19v1r1-branch/offline/CommonSvc/GPUSvc/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_7b7f6
+/hpcfs/juno/junogpu/yiph/Muon/software/sl7/J19v1r1-branch/ExternalLibs/Cmake/3.15.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7b7f6.dir/link.txt --verbose=1
+/hpcfs/juno/junogpu/yiph/Muon/software/sl7/gcc/8.3.0/bin/g++   -std=c++11 -rdynamic -DCMAKE_HAVE_LIBC_PTHREAD    CMakeFiles/cmTC_7b7f6.dir/src.cxx.o  -o cmTC_7b7f6 
+CMakeFiles/cmTC_7b7f6.dir/src.cxx.o: In function `main':
+src.cxx:(.text+0x2d): undefined reference to `pthread_create'
+src.cxx:(.text+0x39): undefined reference to `pthread_detach'
+src.cxx:(.text+0x4a): undefined reference to `pthread_join'
+src.cxx:(.text+0x5e): undefined reference to `pthread_atfork'
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [cmTC_7b7f6] 错误 1
+gmake[1]: 离开目录“/hpcfs/juno/junogpu/yiph/Muon/software/sl7/J19v1r1-branch/offline/CommonSvc/GPUSvc/build/CMakeFiles/CMakeTmp”
+gmake: *** [cmTC_7b7f6/fast] 错误 2
+
+
+Source file was:
+#include <pthread.h>
+
+void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /hpcfs/juno/junogpu/yiph/Muon/software/sl7/J19v1r1-branch/offline/CommonSvc/GPUSvc/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_dfbfc/fast && /usr/bin/gmake -f CMakeFiles/cmTC_dfbfc.dir/build.make CMakeFiles/cmTC_dfbfc.dir/build
+gmake[1]: 进入目录“/hpcfs/juno/junogpu/yiph/Muon/software/sl7/J19v1r1-branch/offline/CommonSvc/GPUSvc/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_dfbfc.dir/CheckFunctionExists.cxx.o
+/hpcfs/juno/junogpu/yiph/Muon/software/sl7/gcc/8.3.0/bin/g++    -std=c++11 -rdynamic -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_dfbfc.dir/CheckFunctionExists.cxx.o -c /hpcfs/juno/junogpu/yiph/Muon/software/sl7/J19v1r1-branch/offline/CommonSvc/GPUSvc/build/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx
+Linking CXX executable cmTC_dfbfc
+/hpcfs/juno/junogpu/yiph/Muon/software/sl7/J19v1r1-branch/ExternalLibs/Cmake/3.15.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_dfbfc.dir/link.txt --verbose=1
+/hpcfs/juno/junogpu/yiph/Muon/software/sl7/gcc/8.3.0/bin/g++   -std=c++11 -rdynamic -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_dfbfc.dir/CheckFunctionExists.cxx.o  -o cmTC_dfbfc -lpthreads 
+/hpcfs/juno/junogpu/yiph/Muon/software/sl7/binutils/2.28/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [cmTC_dfbfc] 错误 1
+gmake[1]: 离开目录“/hpcfs/juno/junogpu/yiph/Muon/software/sl7/J19v1r1-branch/offline/CommonSvc/GPUSvc/build/CMakeFiles/CMakeTmp”
+gmake: *** [cmTC_dfbfc/fast] 错误 2
+
+
+

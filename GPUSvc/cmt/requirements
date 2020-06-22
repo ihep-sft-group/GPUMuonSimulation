@@ -1,0 +1,17 @@
+package GPUSvc
+
+use SniperKernel   v*
+
+
+
+include_dirs "/usr/local/cuda/include"
+
+
+apply_pattern install_more_includes more=GPUSvc
+apply_pattern install_python_modules
+
+library GPUSvc *.cpp *.cu 
+apply_pattern linker_library library=GPUSvc
+
+
+

@@ -1,0 +1,1 @@
+internalComm_cpp_dependencies =  ../src/control/internalComm.cpp   ../src/com/base.h  $(bin)MFSSvc_deps/internalComm_cpp.stamp

@@ -1,0 +1,21 @@
+package MFSSvc
+
+use SniperKernel   v*
+use Boost v* Externals
+use MPI   v* Externals
+
+macro_append Boost_linkopts " -lboost_filesystem "
+macro_append Boost_linkopts " -lboost_thread "
+macro_append Boost_linkopts " -lboost_mpi "
+macro_append Boost_linkopts " -lboost_serialization "
+macro_append Boost_linkopts " -lboost_system "
+macro_append Boost_linkopts " -lboost_chrono "
+macro_append Boost_linkopts " -lboost_date_time "
+macro_append Boost_linkopts " -lboost_atomic "
+macro_append Boost_linkopts " -lpthread "
+
+apply_pattern install_more_includes more=MFSSvc
+apply_pattern install_python_modules
+
+library MFSSvc *.cpp util/*.cpp com/*.cpp control/*.cpp core/*.cpp handler/*.cpp mfspack/*.cpp
+apply_pattern linker_library library=MFSSvc
