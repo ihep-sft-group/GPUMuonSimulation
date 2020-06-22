@@ -76,3 +76,18 @@ time mpiexec -np 1 python /hpcfs/juno/junogpu/yiph/Muon/software/sl7/J19v1r1-bra
 --evtmax 1 --no-gdml --voxel-save-hits-off --voxel-big-step \
 gun --particles mu- --positions 0 0 25000 --directions 0 0 -1 --momentums 215000 >>/hpcfs/juno/junogpu/yiph/Muon/result/mpidata/mpi_client_${mdate}_${mevent}muon${mrepeat}_g${mgpu}_${mnodeid}n${mnode}_output_${mindex}.txt
 ```
+##在Slurm运行
+```sh
+# GPU缪子快速模拟
+sbatch /hpcfs/juno/junogpu/yiph/Muon/commit/new_gpu_muon_commit.sh
+# MPI+GPU缪子快速模拟
+sbatch /hpcfs/juno/junogpu/yiph/Muon/commit/h_gpu_mpi_muon_commit.sh
+sbatch /hpcfs/juno/junogpu/yiph/Muon/commit/s_gpu_mpi_muon_commit_1.sh
+sbatch /hpcfs/juno/junogpu/yiph/Muon/commit/s_gpu_mpi_muon_commit_2.sh
+sbatch /hpcfs/juno/junogpu/yiph/Muon/commit/s_gpu_mpi_muon_commit_3.sh
+
+#或者
+python autoSubmit_for_multi_nodes.py
+python autoSubmit_for_multi_gpus.py
+```
+
